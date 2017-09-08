@@ -1,116 +1,333 @@
 
-<img src='patolino-pernalonga-python-ide.gif'></img>
+In two previous posts, I explored the role of preprocessing data in the machine learning pipeline. In particular, I checked out the <a href = 'https://www.datacamp.com/community/tutorials/the-importance-of-preprocessing-in-data-science-and-the-machine-learning-pipeline-i-centering-scaling-and-k-nearest-neighbours'>k-Nearest Neighbors (k-NN)</a> and <a href = 'https://www.datacamp.com/community/tutorials/the-importance-of-preprocessing-in-data-science-and-the-machine-learning-pipeline-ii-centering-scaling-and-logistic-regression'> logistic regression</a> algorithms and saw how scaling numerical data strongly influenced the performance of the former but not that of the latter, as measured, for example, by accuracy (see Glossary below or previous articles for definitions of scaling, k-NN and other relevant terms). The real take home message here was that preprocessing doesn't occur in a vacuum, that is, you can prepocess the heck out of your data but the proof is in the pudding: how well does your model then perform?
 
-<h1>Top 5 Python IDEs for developers</h1>
+Scaling numerical data (that is, multiplying all instances of a variable by a constant in order to change that variable's range) has two related purposes: i) if your measurements are in meters and mine are in miles, then, if we both scale our data, they end up being the same & ii) if two variables have vastly different ranges, the one with the larger range may dominate your predictive model, even though it may be less important to your target variable than the variable with the smaller range. What we saw is that this problem identified in ii) occurs with k-NN, which explicitly looks at how close data are to one another but not in logistic regression which, when being trained, will shrink the relevant coefficient to account for the lack of scaling.
 
-IDE stands for Integrated Development Environment. It's a coding tool which allows you to write, test and debug your code in an easier way, as they typically offer code completion or code insight by highlighting, resource management, debugging tools,... And even though the IDE is a strictly defined concept, it's starting to be redefined as other tools such as notebooks start gaining more and more features that traditionally belong to IDEs. For example, debugging your code is also possible in Jupyter Notebook. 
+As the data we used in the previous articles was real-world data, all we could see was how the models performed before and after scaling. Here, in order to see how noise in the form of nuisance variables (those which do not effect the target variable but may effect your model) changes model performance both pre- and post-scaling, I'll synthesize a dataset in which I can control the precise nature of the nuisance variable. **We'll see that the noisier the sythesized data, the more important scaling will be for k-NN**. All examples herein will be in Python. If you're not familiar with Python, you can check out our DataCamp courses <a href = 'https://www.datacamp.com/'>here</a>. I will make use of the libraries <a href = 'http://pandas.pydata.org/'>pandas</a> for our dataframe needs and <a href = 'http://scikit-learn.org/stable/'>scikit-learn</a> for our machine learning needs.
 
-You can probably most clearly see this evolution in the results of the <a href='http://stackoverflow.com/insights/survey/2016#technology-development-environments'>Stack Overflow Developer Survey</a> below, which also includes these new tools, next to the traditional IDEs that you might already know; They all fall under the section "development environment". 
-
-Because of all the features that IDEs have to offer, they are extremely useful for development: they make your coding more comfortable and this is no different for data science. However, given the fact that there aren't only the traditional IDEs to consider, but also new tools, such as notebooks, you might be wondering which IDE to use when you're just starting out with data science. 
-
-<h2>IDE vs Text Editors</h2>
-<img src='so-poll.jpg'></img>
-
-The truth is that you can code in almost any software, from prompt command to Windows notepad, but you may also want a proper programming environment which combines coding facility with a debugging environment. So why would or do you choose a traditional IDE instead of, for example, a notepad? The answer would be practicality. For instance, imagine that you are coding in any text editor like Windows notepad. When your code is ready, you'll need to run it. You can't execute your program in a text editor like this, so you must use a prompt command to do it. Rather than use two different programs, wouldn't better have it all in just one place? That's what an IDE is ready for.
-
-But, take a closer look at the image above. Notepad++, which is a text editor in its essence, is one of the tools most used by Stack Overflow community. 
-
-Isn't that weird?
-
-Well, many text editors can be used as an IDE if you make use of plugins: when you're working with Notepad++, for example, you can use these plugins such as the <a href='https://sourceforge.net/projects/npp-plugins/files/DBGP%20Plugin/'>DBGP for Notepad++</a> to install a debugger in the application, allowing you to run and analyze your code directly in your favorite text editor. 
-
-And this immediately explains why text editors can be so popular: they not only offer you the blank slate, but they also give you the option to add features that you might need. This stands in clear contrast with IDEs such as Visual Studio, Spyder, and Rodeo, where these features are built in and you don't need to install anything else to start developing, but where the learning curve might be a little bit steeper for users.
-
-<h2>The Top 5 IDEs For Data Science With Python</h2>
-
-Creating a list with just five IDEs to do data science with Python is a hard task: you might not only want to consider the possible learning curve, price or built-in/downloadable features, but you also might want to take into account the possibility to visualize and report on your results, or how easy a certain IDE makes it for you to collaborate with others. 
-
-You'll see that your choice will balance all of these things and that the 'best' IDE for you will be the one which makes your life easier and your work more comfortable. 
-
-That's why it's best to see this list as a guide of software to test before you pick your favorite.
-
-<h2>Spyder</h2>
-<img src='spyder.png' alt='Spyder interface'></img>
-
-If you have the Anaconda distribution installed on your computer, you probably already know Spyder. It's an open source cross-platform IDE for data science. If you have never worked with an IDE, Spyder could perfectly be your first approach. It integrates the essentials libraries for data science, such as NumPy, SciPy, Matplotlib and IPython, besides that, it can be extended with plugins.
-
-Different of most of IDEs around the web, Spyder was built specifically for data science. It may not be as charming as another IDEs such as Visual Studio or Atom, but give it a try! The learning curve is so smooth that you will master it in a blink of an eye. If you are a beginner, you'll like to use features like the online help, which allows you search for specific information about libraries.
-
-Spyder contains features like a text editor with syntax highlighting, code completion and variable exploring, which you can edit its values using a Graphical User Interface (GUI). Spyder is free and it's available for Windows, MacOS and major Linux distributions, like Debian, Fedora, and Ubuntu. You can install Spyder by <a href='https://www.continuum.io/downloads'>downloading Anaconda on Continuum's website</a>.
-
-<h2>PyCharm</h2>
-<img src='pycharm.png' alt='PyCharm interface'></img>
-
-PyCharm is an IDE made by the folks at JetBrain, a team responsible for one of the most famous Java IDE, the IntelliJ IDEA. This tool could be perfect for those who already have experience using another JetBrain's IDE, due to the fact that the interface and features be similar.
-
-Just like other IDEs, PyCharm has interesting features such as a code editor, errors highlighting, a powerful debugger with a graphical interface, besides of Git integration, SVN, and Mercurial. 
-
-Talking about integration, if you like IPython or Anaconda distribution, it would be nice for you to know that PyCharm integrates its tools and libraries such as NumPy and Matplotlib, allowing you work with array viewers and interactive plots.
-
-In addition to Python, PyCharm provides support for JavaScript, HTML/CSS, Angular JS, Node.js, and so on, what makes it a good option for web development. Available for free on Windows, Linux and Mac, you can expand PyCharm's features by mean of plugins. You can also customize your IDE, choosing between different themes, color schemes, and key-binding.
-
-<h2>Rodeo</h2>
-<img src='rodeo-tutorials.gif' width='750px'></img>
-
-This IDE, clearly distinguishable from the logo with the orange hat, is one of the best Python IDEs for data science. That's because it was built specifically for data analysis. It's pretty similar to RStudio, which is by far the most popular IDE for the R language, not just because of its appearance, but also for its features. 
-
-For instance, when you first open up Rodeo, the IDE's window is divided into four groups: text editor, console, environment for variable visualization and plot/libraries/files, just like RStudio. You can clearly see this in the above image.
-
-The division of the windows isn't a bad thing. On the contrary, if you are an R user and you are migrating to Python, Rodeo surely could be your initial approach. It is also great for newbies, thanks to its helper material such as cheat sheets and built-in tutorials. The main advantage of this IDE is its customization. You can easily see and explore what you are creating, either by inspecting variable's values and interacting with plots and data frames. For free, Rodeo is available for Windows, Linux, and Mac. You can download it on <a href='https://www.yhat.com/products/rodeo'>Yhat official website</a>.
-
-<h2>Atom</h2>
-<img src='atom.jpg'></img>
-
-An open source IDE developed by Github. That sounds great, right? 
-
-That's exactly what Atom is. 
-
-Although it's available for many popular programming languages such as Ruby on Rails, PHP, Java and so on, Atom has interesting features that create a good experience for Python developers. One of the best advantages of Atom is its community, chiefly due to the constants enhancements and plugins that they develop in order to customize your IDE and improve your workflow.
-
-For instance, One of this plugins - called "Packages" - is the <a href='https://atom.io/packages/data-atom'>Data Atom</a>, which allows you to write and execute SQL queries. It supports PostgreSQL, Microsoft SQL Server, and MySQL. Besides that, you can also visualize your results on Atom, without open any other window. 
-
-As you already expected, Atom's integration with git is awesome. And, as other IDEs, it allows you to use multiples panes, themes, and colors, managing multiples projects. 
-
-Do you want to know one of the downsides? Atom might have a weak performance on older CPUs. 
-
-Based in Electron - also known as Atom Shell, a cross-platform desktop applications framework by using Chromium -, Atom is available for free for Windows, OS X, and Linux. <a href='https://atom.io/'>You can download it clicking here</a>! 
-
-<h2>Jupyter Notebook</h2>
-<img src='jupyter-notebook.png'></img>
+In the code chunk below, we use scikit-learn's *make_blobs function* to generate 2000 data points that are in 4 clusters (each data point has 2 predictor variables and 1 target variable).
 
 
+```python
+# Generate some clustered data (blobs!)
+import numpy as np
+from sklearn.datasets.samples_generator import make_blobs
+n_samples=2000
+X, y = make_blobs(n_samples, centers=4, n_features=2,
+                  random_state=0)
+```
 
-Jupyter Notebook was born out of IPython in 2014. It is a web application based on server-client structure and it allows you to create and manipulate notebook documents - or just "notebooks". Jupyter Notebook doesn't work just as an IDE, but also as a presentation tool. The notebook is divided into cells, independent blocks of code that support programming languages like Julia, Python, R and many others. In addition to that, Jupyter Notebook supports markdowns, allowing you to add HTML components from images to videos.
+#### Plotting the synthesized data
 
-Thanks to Jupyter, you can easily see and edit your code in order to create compelling presentations. For instance, you can use data visualization libraries like Matplotlib and Seaborn and show your graphs in the same document where your code is. 
 
-Besides that, you can export your final work to PDF and HTML files, or you can just export it as a .py file. In addition, you can also create blogs and presentations from your notebooks. <!-- go a little bit further into the output options ---> 
+We'll now plot in the plane the data that we've synthesized. Each axis is a predictor variable and the colour is a key to the target variable:
 
-Jupyter Notebook is easy to install and easier to use. If you want to know everything about Jupyter and its details, <a href='https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook'>check it out this tutorial that will guide you through this awesome data science tool</a>.
 
-<h2>Honorable mentions</h2>
+```python
+%matplotlib inline
+import matplotlib.pyplot as plt
+plt.style.use('ggplot')
+plt.figure(figsize=(20,5));
+plt.subplot(1, 2, 1 );
+plt.scatter(X[:,0] , X[:,1],  c = y, alpha = 0.7);
+plt.subplot(1, 2, 2);
+plt.hist(y)
+plt.show()
+```
 
-What's the best IDE for you? 
 
-The answer is simple: that one which makes your life easier and your work more comfortable. 
+![png](output_4_0.png)
 
-The purpose of this list is to give you good references to start off. You can test each one and give your considerations about what it's good and bad at. In addition to that, you can try some alternatives that probably might give you an even better score.
 
-<img src='nteract.jpg'></img>
+*Note: we can see in the 2nd plot that all possible target variables are equally represented. In this case (or even if they are approximately equally represented), we say that the class y is balanced.*
 
-For instance, <a href='https://nteract.io/'>nteract.io</a> could be a good alternative. nteract is a desktop application that allows you to create notebooks just like Jupyter Notebook, however, Instead of setting a server like in Jupyter, you download and execute an application that provides you all the tools to create beautiful documents with code and markdown. It's available for Windows, Mac, and Linux, besides of support ipynb files - IPython notebooks.
+I now want to plot histograms of the features (predictor variables):
 
-<img src='visual-studio-code.gif'></img>
 
-Another alternative could be the Visual Studio Code. It's a text editor developed by Microsoft, but which can also be used as an IDE. One good thing about Visual Studio is it Git integration. Like Atom, you can commit, sync and create branches in your repositories easily with this application. Visual Studio contains a feature called IntelliSense, which provides code completions based on variable types, functions and imported modules. It also provides syntax highlighting and autocomplete function.
+```python
+import pandas as pd
+df = pd.DataFrame(X)
+pd.DataFrame.hist(df, figsize=(20,5));
+```
 
-<img src='thonny.png'></img>
 
-To finish our list, we need to make mention of Thonny: an IDE for learning and teaching programming. It's a software developed in University of Tartu, which you can <a href='https://bitbucket.org/plas/thonny/downloads/'>download for free on Bitbucket</a> for Windows, Linux, and Mac. Among its features, Thonny supports code completion and highlight syntax errors, but it also provides a simple debugger, which you can run your program step-by-step. While editing a function, a new window is opened with local variables and the code being shown separately of your main code. The purpose of Thonny is give you a good understanding about how Python works under the hood.
+![png](output_7_0.png)
 
-<h2>Conclusion</h2>
 
-IDEs surely can help you to improve your workflow and make your results profitable. You can write, execute and debug your code easily, aside from customizing windows and colors. Instead of a traditional IDE, you can also try a text editor like Notepad++, but keep in mind that you'll need to expand it by using plugins (such as PyNPP) if you want to execute your code.
+Let's now split into testing & training sets & plot both sets:
 
-Do you know another good IDE for Python? Leave a comment below to let us know! 
+
+```python
+from sklearn.cross_validation import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+plt.figure(figsize=(20,5));
+plt.subplot(1, 2, 1 );
+plt.title('training set')
+plt.scatter(X_train[:,0] , X_train[:,1],  c = y_train, alpha = 0.7);
+plt.subplot(1, 2, 2);
+plt.scatter(X_test[:,0] , X_test[:,1],  c = y_test, alpha = 0.7);
+plt.title('test set')
+plt.show()
+```
+
+
+![png](output_9_0.png)
+
+
+Looking good! Now let's instantiate a k-Nearest Neighbors voting classifier and train it on our training set:
+
+
+```python
+from sklearn import neighbors, linear_model
+knn = neighbors.KNeighborsClassifier()
+knn_model = knn.fit(X_train, y_train)
+```
+
+Now that we have trained our model we can fit it to our test set and compute the accuracy:
+
+
+```python
+print('k-NN score for test set: %f' % knn_model.score(X_test, y_test))
+```
+
+    k-NN score for test set: 0.935000
+
+
+We can also re-fit it to our training set and compute the accuracy. We would expect it to perform better on the training set than the test set:
+
+
+```python
+print('k-NN score for training set: %f' % knn_model.score(X_train, y_train))
+```
+
+    k-NN score for training set: 0.941875
+
+
+It is worth reiterating that the default scoring method for k-NN in scikit-learn is *accuracy*. To check out a variety of other metrics, we can use scikit-learn's classification report also: 
+
+
+```python
+from sklearn.metrics import classification_report
+y_true, y_pred = y_test, knn_model.predict(X_test)
+print(classification_report(y_true, y_pred))
+```
+
+                 precision    recall  f1-score   support
+    
+              0       0.87      0.90      0.88       106
+              1       0.98      0.93      0.95       102
+              2       0.90      0.92      0.91       100
+              3       1.00      1.00      1.00        92
+    
+    avg / total       0.94      0.94      0.94       400
+    
+
+
+#### Now with scaling
+
+I'll now scale the predictor variables and then use k-NN again:
+
+
+```python
+from sklearn.preprocessing import scale
+Xs = scale(X)
+Xs_train, Xs_test, y_train, y_test = train_test_split(Xs, y, test_size=0.2, random_state=42)
+plt.figure(figsize=(20,5));
+plt.subplot(1, 2, 1 );
+plt.scatter(Xs_train[:,0] , Xs_train[:,1],  c = y_train, alpha = 0.7);
+plt.title('scaled training set')
+plt.subplot(1, 2, 2);
+plt.scatter(Xs_test[:,0] , Xs_test[:,1],  c = y_test, alpha = 0.7);
+plt.title('scaled test set')
+plt.show()
+```
+
+
+![png](output_20_0.png)
+
+
+
+```python
+knn_model_s = knn.fit(Xs_train, y_train)
+print('k-NN score for test set: %f' % knn_model_s.score(Xs_test, y_test))
+```
+
+    k-NN score for test set: 0.935000
+
+
+It doesn't perform any better with scaling! This is most likely because both features were already around the same range. It really makes sense to scale when variables have widely varying ranges. To see this in action, we're going to add another feature. Moreover, this feature will bear no relevance to the target variable: it will be mere noise.
+
+#### Adding noise to the signal:
+
+We add a third variable of Gaussian noise with mean 0 and variable standard deviation $\sigma$. We'll call $\sigma$ the strength of the noise and we'll see that the stronger the noise, the worse the performance of k-Nearest Neighbours.
+
+
+```python
+# Add noise column to predictor variables
+ns = 10**(3) # Strength of noise term
+newcol = np.transpose([ns*np.random.randn(n_samples)])
+Xn = np.concatenate((X, newcol), axis = 1)
+```
+
+We'll now use the mplot3d package to plot the 3D data:
+
+
+```python
+from mpl_toolkits.mplot3d import Axes3D
+fig = plt.figure(figsize=(15,10));
+ax = fig.add_subplot(111, projection='3d' , alpha = 0.5);
+ax.scatter(Xn[:,0], Xn[:,1], Xn[:,2], c = y);
+```
+
+
+![png](output_27_0.png)
+
+
+Now let's see how our model performs on the new data:
+
+
+```python
+Xn_train, Xn_test, y_train, y_test = train_test_split(Xn, y, test_size=0.2, random_state=42)
+knn = neighbors.KNeighborsClassifier()
+knn_model = knn.fit(Xn_train, y_train)
+print('k-NN score for test set: %f' % knn_model.score(Xn_test, y_test))
+```
+
+    k-NN score for test set: 0.400000
+
+
+This is a horrible model! How about we scale and check out performance?
+
+
+```python
+Xns = scale(Xn)
+s = int(.2*n_samples)
+Xns_train = Xns[s:]
+y_train = y[s:]
+Xns_test = Xns[:s]
+y_test = y[:s]
+knn = neighbors.KNeighborsClassifier()
+knn_models = knn.fit(Xns_train, y_train)
+print('k-NN score for test set: %f' % knn_models.score(Xns_test, y_test))
+```
+
+    k-NN score for test set: 0.907500
+
+
+Great, so after scaling the data, the model performs nearly as well as were there no noise introduced. Let's now check out the model performance as a function of noise strength.
+
+#### The stronger the noise, the bigger the problem:
+
+We're now going to see how the noise strength effects model accuracy. As we'll need to use the same code a number of times, let's actually wrap up the main parts in a small function:
+
+
+```python
+def accu( X, y):
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    knn = neighbors.KNeighborsClassifier()
+    knn_model = knn.fit(X_train, y_train)
+    return(knn_model.score(X_test, y_test))
+```
+
+
+```python
+noise = [10**i for i in np.arange(-1,6)]
+A1 = np.zeros(len(noise))
+A2 = np.zeros(len(noise))
+count = 0
+for ns in noise:
+    newcol = np.transpose([ns*np.random.randn(n_samples)])
+    Xn = np.concatenate((X, newcol), axis = 1)
+    Xns = scale(Xn)
+    A1[count] = accu( Xn, y)
+    A2[count] = accu( Xns, y)
+    count += 1
+```
+
+We now plot accuracy as a function of noise strength (note log x axis):
+
+
+```python
+plt.scatter( noise, A1 )
+plt.plot( noise, A1, label = 'unscaled', linewidth = 2)
+plt.scatter( noise, A2 , c = 'r')
+plt.plot( noise, A2 , label = 'scaled', linewidth = 2)
+plt.xscale('log')
+plt.xlabel('Noise strength')
+plt.ylabel('Accuracy')
+plt.legend(loc=3);
+```
+
+
+![png](output_38_0.png)
+
+
+See in the above figure that the more noise there is in the nuisance variable, the more important it is to scale your data for the k-NN model! Below, you'll have the opportunity to do the same for logistic regression. To conclude, we have seen the essential place occupied in the data scientific pipeline by preprocessing, in its scaling and centering incarnation, and we have done so to promote a holistic approach to the challenges of machine learning. In future articles, I hope to extend this discussion to other types of preprocessing, such as transformations of numerical data and preprocessing of categorical data, both essential aspects of any data scientists's toolkit.
+
+**Exercise for the avid reader:** try out fitting a logistic regression model to the above synthesized datasets and check out the model performance. How is accuracy a function of noise strength for scaled and unscaled data, respectively? You can do so in the DataCamp Light widget below! Change the exponent of 10 to alter the amount of noise (first try the range that I tried above for k-NN) and set *sc = True* if you want to scale your features. You can also check out <a href = 'https://github.com/datacamp/datacamp-light'> DataCamp Light on Github</a>!
+<script src="https://cdn.datacamp.com/datacamp-light-1.0.0.min.js"></script>
+
+<div data-datacamp-exercise data-lang="python">
+    <code data-type="pre-exercise-code">
+        # This will get executed each time the exercise gets initialized
+	# Import packages
+
+    </code>
+    <code data-type="sample-code">
+	# Below, change the exponent of 10 to alter the amount of noise
+	ns = 10**(3) # Strength of noise term
+	# Set sc = True if you want to scale your features
+	sc = False
+    
+	#Import packages
+	import numpy as np
+	from sklearn.cross_validation import train_test_split
+	from sklearn import neighbors, linear_model
+	from sklearn.preprocessing import scale
+	from sklearn.datasets.samples_generator import make_blobs
+    
+	#Generate some data
+	n_samples=2000
+	X, y = make_blobs(n_samples, centers=4, n_features=2,
+                  random_state=0)
+
+	# Add noise column to predictor variables
+	newcol = np.transpose([ns*np.random.randn(n_samples)])
+	Xn = np.concatenate((X, newcol), axis = 1)
+
+	#Scale if desired
+	if sc == True:
+		Xn = scale(Xn)
+    
+	#Train model and test after splitting
+	Xn_train, Xn_test, y_train, y_test = train_test_split(Xn, y, test_size=0.2, random_state=42)
+	lr = linear_model.LogisticRegression()
+	lr_model = lr.fit(Xn_train, y_train)
+	print('logistic regression score for test set: %f' % lr_model.score(Xn_test, y_test))
+
+    </code>
+    <code data-type="solution">
+
+    </code>
+    <code data-type="sct">
+	
+</div>
+</div>
+___
+### Glossary
+
+**Supervised learning:** The task of inferring a *target variable* from *predictor variables*. For example, inferring the *target variable* 'presence of heart disease' from *predictor variables* such as 'age', 'sex', and 'smoker status'.
+
+
+**Classification task:** A *supervised learning* task is a *classification task* if the target variable consists of categories (e.g. 'click' or 'not', 'malignant' or 'benign' tumour).
+
+**Regression task:** A *supervised learning* task is a *regression task* if the target variable is a continuously varying variable (e.g. price of a house) or an ordered categorical variable such as 'quality rating of wine'.
+
+**k-Nearest Neighbors:** An algorithm for *classification tasks*, in which a data point is assigned the label decided by a majority vote of its k nearest neighbors.
+
+**Preprocessing:** Any number of operations data scientists will use to get their data into a form more appropriate for what they want to do with it. For example, before performing sentiment analysis of twitter data, you may want to strip out any html tags, white spaces, expand abbreviations and split the tweets into lists of the words they contain.
+
+**Centering and Scaling:** These are both forms of preprocessing *numerical data*, that is, data consisting of numbers, as opposed to categories or strings, for example; *centering* a variable is subtracting the mean of the variable from each data point so that the new variable's mean is 0; *scaling* a variable is multiplying each data point by a constant in order to alter the range of the data. See the body of the article for the importance of these, along with examples.
+
+
+*This article was generated from a Jupyter notebook. You can download the notebook <a href = 'https://github.com/hugobowne/machine_learning_techniques/blob/master/notes_on_ML/Scaling_synthesized_data.ipynb'>here</a>.*
