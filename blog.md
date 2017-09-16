@@ -708,11 +708,11 @@ print('Number of pairs: {}'.format(len(odd_node_pairs)))
 Let's confirm that this number of pairs is correct with a the combinatoric below.  Luckily, you only have 630 pairs to worry about.  Your computation time to solve this CPP example is trivial (a couple seconds).  
 
 However, if you had 3,600 odd node pairs instead, you'd have ~6.5 million pairs to optimize.  That's a ~10,000x increase in output given a 100x increase in input size.
-
-\begin{equation*}
+<div data-type="mathjax">
+\begin{equation}
  \#\;of\;pairs  = n\;choose\;r = {n \choose r} =  \frac{n!}{r!(n-r)!} = \frac{36!}{2! (36-2)!} = 630
-\end{equation*}
-
+\end{equation}
+</div>
 
 
 ### Step 2.2: Compute Shortest Paths between Node Pairs
