@@ -709,9 +709,9 @@ Let's confirm that this number of pairs is correct with a the combinatoric below
 
 However, if you had 3,600 odd node pairs instead, you'd have ~6.5 million pairs to optimize.  That's a ~10,000x increase in output given a 100x increase in input size.
 <div data-type="mathjax">
-\begin{equation}
+\begin{equation*}
  \#\;of\;pairs  = n\;choose\;r = {n \choose r} =  \frac{n!}{r!(n-r)!} = \frac{36!}{2! (36-2)!} = 630
-\end{equation}
+\end{equation*}
 </div>
 
 
