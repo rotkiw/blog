@@ -1,5 +1,5 @@
 
-# Intro to Graph Optimization: Solving the Chinese Postman Problem with NetworkX in Python
+# Intro to Graph Optimization: Solving the Chinese Postman Problem with NetworkX in PythonX
 
 
 ```python
