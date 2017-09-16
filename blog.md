@@ -1,5 +1,5 @@
 
-# Intro to Graph Optimization: Solving the Chinese Postman Problem with NetworkX in PythonX
+# Intro to Graph Optimization: Solving the Chinese Postman Problem with NetworkX in Python
 
 
 ```python
@@ -33,13 +33,16 @@ IFrame("https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Network+Optimiz
 ```
 
 
-    <iframe
-        width="600"
-        height="450"
-        src="https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Network+Optimization/sleepgiant.pdf"
-        frameborder="0"
-        allowfullscreen
-    ></iframe>
+
+
+
+        <iframe
+            width="600"
+            height="450"
+            src="https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Network+Optimization/sleepgiant.pdf"
+            frameborder="0"
+            allowfullscreen
+        ></iframe>
         
 
 
