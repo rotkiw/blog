@@ -6,7 +6,43 @@
 
 ```
 
-change
+With this tutorial, you'll tackle an established problem in graph theory called the Chinese Postman Problem. There are some components of the algorithm that while conceptually simple, turn out to be computationally rigorous. However, for this tutorial, only some prior knowledge of Python is required: no rigorous math, computer science or graph theory background is needed.
+
+This tutorial will first go over the basic building blocks of graphs (nodes, edges, paths, etc) and solve the problem on a real graph (trail network of a state park) using the [NetworkX] library in Python. You'll focus on the core concepts and implementation.  For the interested reader, further reading on the guts of the optimization are provided.
+
+
+* Motivating Graph Optimization
+    - The Problem
+    - Personal Motivation
+* Introducing Graphs
+    - Introducing NetworkX
+    - Installing packages
+* Load Data
+* Create Graph
+* Inspect Graph
+* Visualize Graph
+* Solving the CPP
+    - Overview of CPP Algorithm
+    - Assumptions and Simplifications
+    - CPP Step 1: Find Nodes of Odd Degree
+    - CPP Step 2: Find Min Distance Pairs
+    - CPP Step 3: Compute Eulerian Circuit
+    - Compute CPP Solution
+    - Visualize CPP Solution
+* Next Steps 
+* References
+
+[NetworkX]:https://networkx.github.io/
+
+## Motivating Graph Optimization
+
+### The Problem
+
+You've probably heard of the [Travelling Salesman Problem] which amounts to finding the shortest route (say, roads) that connects a set of nodes (say, cities).  Although lesser known, the [Chinese Postman Problem] (CPP), also referred to as the Route Inspection or Arc Routing problem, is quite similar.  The objective of the CPP is to find the shortest path that covers all the links (roads) on a graph at least once.  If this is possible without doubling back on the same road twice, great; That's the ideal scenario and the problem is quite simple.  However, if some roads must be traversed more than once, you need some math to find the shortest route that hits every road at least once with the lowest total mileage.  
+
+[NetworkX]:https://networkx.github.io/
+[Travelling Salesman Problem]:https://en.wikipedia.org/wiki/Travelling_salesman_problem
+[Chinese Postman Problem]: https://en.wikipedia.org/wiki/Route_inspection_problem
 
 ### Personal Motivation
 
@@ -29,7 +65,7 @@ For another reference, the Sleeping Giant trail map is provided below:
 
 ```python
 from IPython.display import IFrame, HTML  # TODO: Remove this cell when the PDF is embedded directly within HTML
-IFrame("https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Network+Optimization/sleepgiant.pdf", width=600, height=450)
+HTML(IFrame("https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Network+Optimization/sleepgiant.pdf", width=600, height=450))
 ```
 
 
