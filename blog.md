@@ -714,13 +714,6 @@ However, if you had 3,600 odd node pairs instead, you'd have ~6.5 million pairs 
 \end{equation*}
 </div>
 
-<div data-type="mathjax">
-\begin{equation*}
- \#\;of\;pairs  = n\;choose\;r = {n \choose r} =  \frac{n!}{r!(n-r)!} = \frac{36!}{2! (36-2)!} = 630
-\end{equation*}
-</div>
-
-
 ### Step 2.2: Compute Shortest Paths between Node Pairs
 
 This is the first step that involves some real computation.  Luckily `networkx` has a convenient implementation of [Dijkstra's algorithm] to compute the shortest path between two nodes.  You apply this function to every pair (all 630) calculated above in `odd_node_pairs`.
