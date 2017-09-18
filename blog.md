@@ -713,6 +713,9 @@ However, if you had 3,600 odd node pairs instead, you'd have ~6.5 million pairs 
  \#\;of\;pairs  = n\;choose\;r = {n \choose r} =  \frac{n!}{r!(n-r)!} = \frac{36!}{2! (36-2)!} = 630
 \end{equation*}
 </div>
+\begin{equation*}
+ \#\;of\;pairs  = n\;choose\;r = {n \choose r} =  \frac{n!}{r!(n-r)!} = \frac{36!}{2! (36-2)!} = 630
+\end{equation*}
 
 ### Step 2.2: Compute Shortest Paths between Node Pairs
 
