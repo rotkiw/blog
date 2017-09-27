@@ -6,7 +6,7 @@
 
 ```
 
-With this tutorial, you'll tackle an established problem in graph theory called the Chinese Postman Problem. There are some components of the algorithm that while conceptually simple, turn out to be computationally rigorous. However, for this tutorial, only some prior knowledge of Python is required: no rigorous math, computer science or graph theory background is needed.
+With this [tutorial](#another_cell), you'll tackle an established problem in graph theory called the Chinese Postman Problem. There are some components of the algorithm that while conceptually simple, turn out to be computationally rigorous. However, for this tutorial, only some prior knowledge of Python is required: no rigorous math, computer science or graph theory background is needed.
 
 This tutorial will first go over the basic building blocks of graphs (nodes, edges, paths, etc) and solve the problem on a real graph (trail network of a state park) using the [NetworkX] library in Python. You'll focus on the core concepts and implementation.  For the interested reader, further reading on the guts of the optimization are provided.
 
@@ -713,9 +713,13 @@ However, if you had 3,600 odd node pairs instead, you'd have ~6.5 million pairs 
  \#\;of\;pairs  = n\;choose\;r = {n \choose r} =  \frac{n!}{r!(n-r)!} = \frac{36!}{2! (36-2)!} = 630
 \end{equation*}
 </div>
+
+<div data-type="mathjax">
 \begin{equation*}
  \#\;of\;pairs  = n\;choose\;r = {n \choose r} =  \frac{n!}{r!(n-r)!} = \frac{36!}{2! (36-2)!} = 630
 \end{equation*}
+</div>
+
 
 ### Step 2.2: Compute Shortest Paths between Node Pairs
 
@@ -1319,6 +1323,7 @@ print(edge_visits.to_string(index=False))
          35         2
 
 
+<a id='another_cell'></a>
 ## Visualize CPP Solution
 
 While NetworkX also provides functionality to visualize graphs, they are [notably humble] in this department:
