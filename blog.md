@@ -1,3 +1,70 @@
+Keeping codebases consistent ensures an easy understanding of abstractions, without having to switch contexts between different coding styles.;<p><a href="https://www.amazon.com/Hemingway-Wrote-JavaScript-Angus-Croll/dp/1593275854">If Hemingway Wrote JavaScript</a> I bet he would keep it consistent
+for the whole codebase. When reading a book you do not think about style inconsistencies as books are written in one manner. It makes them
+easy to read and understand. You don&#39;t have to focus on looking for punctuation marks, you know when new sentences start, you know that commas split a sentence into logical parts.
+What if that wouldn&#39;t be the case? How about reading something like:</p>
+<pre><code>&quot;cYBERSPACE - A Cconsensual Hallucination. experienced Daily by Billions,
+of legitimate operators - in eVERY nation
+- by children being, taught, mATHEMATICAL concepts - a graphic representation,
+of data abstracted, from banks of every cOMPUTER in the human system
+. unthinkable complexity. lines of, light ranged in the nonspace of the mind
+, cLUSTERS and cONSTELLATIONS of data like city lights, receding...&quot;
+</code></pre><p>A bit hard isn&#39;t it? You still understand everything but it takes some effort to map this text into grammar rules to which we are used to.</p>
+<p>And what about this one:</p>
+<pre><code>&quot;Cyberspace.
+A consensual hallucination experienced daily by billions of legitimate operators,
+in every nation, by children being taught mathematical concepts...
+A graphic representation of data abstracted from banks of every computer in the human system.
+Unthinkable complexity.
+Lines of light ranged in the nonspace of the mind, clusters and constellations of data. Like city lights, receding...&quot;
+</code></pre><p>I bet it is much easier to read now.</p>
+<p>I believe reading a good codebase is similar to reading a well written book. If the whole codebase is written in the same style it is much easier to understand abstractions
+without switching contexts between different coding styles. Therefore we should follow a rule to <strong>K</strong>eep <strong>I</strong>t <strong>C</strong>onsistent <strong>S</strong>tupid! Hence <strong>KICS</strong> (resemblance to <a href="https://en.wikipedia.org/wiki/KISS_principle">KISS</a> intended).</p>
+<p>Codebase can have as many coding styles, as there are developers in a team. That is why it is important to agree on some rules as we do read code much more often then we write it.</p>
+<p>When writing new code I often ask myself simple questions like:</p>
+<ol>
+<li>Even if I am used to particular coding style would it be applicable in the current file, would it make it easy to read?</li>
+<li>Even if I am not a fan of a particular coding style would it make sense to force my approach here?</li>
+<li>What have we used in other files?</li>
+</ol>
+<p>Of course we shouldn&#39;t Copy &amp; Paste code and duplicate badly written blocks, it is a developer&#39;s responsibility to detect things like that and refactor it
+in two places if needed.</p>
+<p>Let&#39;s see a simple Ruby example:</p>
+<pre><code class="lang-ruby">def check_alive?
+  return false if zombie?
+  true
+end
+
+def check_zombie?
+  zombie? ? true : false
+end
+</code></pre>
+<p>and now a consistent one:</p>
+<pre><code class="lang-ruby">def check_alive?
+  return false if zombie?
+  true
+end
+
+def check_zombie?
+  return true if zombie?
+  false
+end
+</code></pre>
+<p>another approach:</p>
+<pre><code class="lang-ruby">def check_alive?
+  alive? ? true : false
+end
+
+def check_zombie?
+  zombie? ? true : false
+end
+</code></pre>
+<p>It does not really matter to which one we agree on, important is to keep it consistent not only in context of one file but in context of the whole codebase.
+As in the book analogy - you wouldn&#39;t like to have text consistent only in context of single pages and read different styles when you go to the next one.</p>
+<p>Good design is the best indicator of your identity and skills as a developer, coding style is next in line.
+Same as a great author is a great story teller and then he can be a great writer.</p>
+<p>KICS and let everyone enjoy reading your code.</p>
+
+
 
 # TABLE2 Intro to Graph Optimization: Solving the Chinese Postman Problem with NetworkX in Python
 
