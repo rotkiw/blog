@@ -1,3 +1,6 @@
+# xxx
+
+
 Keeping codebases consistent ensures an easy understanding of abstractions, without having to switch contexts between different coding styles.;<p><a href="https://www.amazon.com/Hemingway-Wrote-JavaScript-Angus-Croll/dp/1593275854">If Hemingway Wrote JavaScript</a> I bet he would keep it consistent
 for the whole codebase. When reading a book you do not think about style inconsistencies as books are written in one manner. It makes them
 easy to read and understand. You don&#39;t have to focus on looking for punctuation marks, you know when new sentences start, you know that commas split a sentence into logical parts.
