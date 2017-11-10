@@ -36,6 +36,72 @@ This tutorial will first go over the basic building blocks of graphs (nodes, edg
 
 ## Motivating Graph Optimization
 
+<p><strong>Beers:</strong></p>
+
+<ul>
+	<li><code class="lang-python">ID</code>: Unique identifier of the beer.</li>
+	<li><code class="lang-python">Name</code>: Name of the beer.</li>
+	<li><code class="lang-python">ABV</code>: Alcohol by volume of the beer.</li>
+	<li><code class="lang-python">IBU</code>: International Bittering Units of the beer.</li>
+	<li><code class="lang-python">Style</code>: Style of the beer.</li>
+	<li><code class="lang-python">Ounces</code>: Ounces of beer.</li>
+</ul>
+<br>
+<p><strong>Breweries:</strong></p>
+
+<ul>
+	<li><code class="lang-python">ID</code>: Unique identifier of the brewery.</li>
+	<li><code class="lang-python">Name</code>: Name of the brewery.</li>
+	<li><code class="lang-python">City</code>: City where the brewery is located.</li>
+	<li><code class="lang-python">State</code>: State where the brewery is located.</li>
+</ul>
+<br>
+
+<p>You&rsquo;ll first import the datasets that you can find in <a href="https://github.com/nickhould/craft-beers-dataset">this repository</a> with pandas&rsquo; <code class="lang-python">from_csv</code> function. You&rsquo;ll also join the <code class="lang-python">beers</code> and <code class="lang-python">breweries</code> datasets together to facilitate analysis down the road.</p>
+
+<pre>
+<code class="lang-python">import pandas as pd
+
+beers = pd.DataFrame.from_csv("https://raw.githubusercontent.com/nickhould/craft-beers-dataset/master/data/craftcans_beers.csv")
+breweries = pd.DataFrame.from_csv("https://raw.githubusercontent.com/nickhould/craft-beers-dataset/master/data/craftcans_breweries.csv")
+
+beers_and_breweries = pd.merge(beers, 
+                               breweries, 
+                               how='inner', 
+                               left_on="brewery_id", 
+                               right_on="id", 
+                               sort=True,
+                               suffixes=('_beer', '_brewery'))</code></pre>
+
+<p>With the pandas library, you can run the function <code class="lang-python">dtypes</code> to list each column and their data types.</p>
+
+<pre>
+<code class="lang-python">beers.dtypes</code></pre>
+
+<p>Which gives you the following result:</p>
+
+<p>The easiest way to create an empty data frame is probably by just assigning a <code class="lang-r">data.frame()</code> function without any arguments to a vector:</p>
+
+<div data-datacamp-exercise="" data-encoded="true" data-height="300">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJhYiA8LSBkYXRhLmZyYW1lKClcbmFiIn0=</div>
+<br><br>
+<p>You can then start filling your <code class="lang-r">ab</code> up by using the [,] notation.</p>
+
+<p>Be careful, however, because it&rsquo;s easy to make errors while doing this!</p>
+
+<p><strong>Note</strong> how you don&rsquo;t see any column names in this empty data set. If you do want to have those, you can just initialize empty vectors in <code class="lang-r">ab</code>, like this:</p>
+
+
+<pre><code>&quot;cYBERSPACE - A Cconsensual Hallucination. experienced Daily by Billions,
+of legitimate operators - in eVERY nation
+- by children being, taught, mATHEMATICAL concepts - a graphic representation,
+of data abstracted, from banks of every cOMPUTER in the human system
+. unthinkable complexity. lines of, light ranged in the nonspace of the mind
+, cLUSTERS and cONSTELLATIONS of data like city lights, receding...&quot;
+</code></pre><p>A bit hard isn&#39;t it? You still understand everything but it takes some effort to map this text into grammar rules to which we are used to.</p>
+<p>And what about this one:</p>
+
+
+
 ### The Problem
 
 You've probably heard of the [Travelling Salesman Problem] which amounts to finding the shortest route (say, roads) that connects a set of nodes (say, cities).  Although lesser known, the [Chinese Postman Problem] (CPP), also referred to as the Route Inspection or Arc Routing problem, is quite similar.  The objective of the CPP is to find the shortest path that covers all the links (roads) on a graph at least once.  If this is possible without doubling back on the same road twice, great; That's the ideal scenario and the problem is quite simple.  However, if some roads must be traversed more than once, you need some math to find the shortest route that hits every road at least once with the lowest total mileage.  
